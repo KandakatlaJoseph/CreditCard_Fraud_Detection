@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 
 # Load dataset
-df = pd.read_csv("credit_card_fraud.csv.csv")
+df = pd.read_csv("credit_card_fraud.csv")
 df.columns = df.columns.str.strip()
 df.drop_duplicates(inplace=True)
 
