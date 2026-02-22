@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 import pickle
 import os
@@ -14,8 +14,10 @@ columns = pickle.load(open("columns.pkl", "rb"))
 def home():
     return render_template("index.html")
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["GET", "POST"])
 def predict():
+    if request.method == "GET":
+        return redirect(url_for("home"))
     try:
         # Get form values safely
         time = float(request.form.get("time", 0))
